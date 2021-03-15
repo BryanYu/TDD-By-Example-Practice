@@ -13,5 +13,12 @@ namespace TDDPractice
             product = five.Times(3);
             Assert.AreEqual(15, product.Amount);
         }
+
+        [Test]
+        public void TestEqual()
+        {
+            Assert.AreEqual(new Dollar(5), new Dollar(5));
+            Assert.AreNotEqual(new Dollar(5), new Dollar(6));
+        }
     }
 }
