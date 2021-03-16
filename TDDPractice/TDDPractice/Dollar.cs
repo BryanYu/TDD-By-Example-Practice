@@ -1,9 +1,7 @@
 namespace TDDPractice
 {
-    public class Dollar
+    public class Dollar : Money
     {
-        private int amount;
-        
         public Dollar(int amount)
         {
             this.amount = amount;
@@ -14,10 +12,6 @@ namespace TDDPractice
             return new Dollar(amount * multiplier);
         }
 
-        public override bool Equals(object? obj)
-        {
-            Dollar dollar = (Dollar) obj;
-            return amount == dollar.amount;
-        }
+        
     }
 }

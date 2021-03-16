@@ -25,6 +25,8 @@ namespace TDDPractice
         {
             Assert.AreEqual(new Dollar(5), new Dollar(5));
             Assert.AreNotEqual(new Dollar(5), new Dollar(6));
+            Assert.AreEqual(new Franc(5), new Franc(5));
+            Assert.AreNotEqual(new Franc(5), new Franc(6));
         }
     }
 }
