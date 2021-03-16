@@ -8,6 +8,14 @@ namespace TDDPractice
     {
         protected int amount;
 
+        protected string currency;
+
+        protected Money(int amount,string currency)
+        {
+            this.amount = amount;
+            this.currency = currency;
+        }
+
         public override bool Equals(object? obj)
         {
             Money money = (Money)obj;
@@ -16,15 +24,20 @@ namespace TDDPractice
 
         public static Dollar Dollar(int amount)
         {
-            return new Dollar(amount);
+            return new Dollar(amount, "USD");
         }
 
         public static Franc Franc(int amount)
         {
-            return new Franc(amount);
+            return new Franc(amount, "CHF");
         }
 
         public abstract Money Times(int multiplier);
+
+        public string Currency()
+        {
+            return this.currency;
+        }
 
     }
 }

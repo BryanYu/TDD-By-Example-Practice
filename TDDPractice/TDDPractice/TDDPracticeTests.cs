@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using NUnit.Framework;
 
 namespace TDDPractice
@@ -28,6 +29,13 @@ namespace TDDPractice
             Assert.AreEqual(Money.Franc(5), Money.Franc(5));
             Assert.AreNotEqual(Money.Franc(5), Money.Franc(6));
             Assert.AreNotEqual(Money.Franc(5), Money.Dollar(5));
+        }
+
+        [Test]
+        public void TestCurrency()
+        {
+            Assert.AreSame("USD", Money.Dollar(1).Currency());
+            Assert.AreSame("CHF", Money.Franc(1).Currency());
         }
     }
 }
