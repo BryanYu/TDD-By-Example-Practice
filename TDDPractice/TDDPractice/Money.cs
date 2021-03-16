@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TDDPractice
 {
-    public class Money
+    public abstract class Money
     {
         protected int amount;
 
@@ -13,5 +13,18 @@ namespace TDDPractice
             Money money = (Money)obj;
             return amount == money.amount && this.GetType() == money.GetType();
         }
+
+        public static Dollar Dollar(int amount)
+        {
+            return new Dollar(amount);
+        }
+
+        public static Franc Franc(int amount)
+        {
+            return new Franc(amount);
+        }
+
+        public abstract Money Times(int multiplier);
+
     }
 }
