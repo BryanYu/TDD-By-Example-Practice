@@ -8,7 +8,7 @@ namespace TDDPractice
         [Test]
         public void TestMultiplication()
         {
-            Money five = Money.Dollar(5);
+            Dollar five = Money.Dollar(5);
             Assert.AreEqual(Money.Dollar(10), five.Times(2));
             Assert.AreEqual(Money.Dollar(15), five.Times(3));
         }
@@ -36,6 +36,12 @@ namespace TDDPractice
         {
             Assert.AreSame("USD", Money.Dollar(1).Currency());
             Assert.AreSame("CHF", Money.Franc(1).Currency());
+        }
+
+        [Test]
+        public void TestDifferentClassEqual()
+        {
+            Assert.AreEqual(new Money(10, "CHF"), (new Franc(10, "CHF")));
         }
     }
 }
