@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace TDDPractice
 {
     public class Bank
     {
-        public Money Reduce(IExpression sum, string to)
+        public Money Reduce(IExpression source, string to)
         {
-            return Money.Dollar(10);
+            Sum sum = (Sum) source;
+            return sum.Reduce(to);
+
+
+
         }
     }
 }

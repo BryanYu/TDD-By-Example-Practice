@@ -1,5 +1,7 @@
 using System.Runtime.InteropServices;
+using System.Xml.XPath;
 using NUnit.Framework;
+using NUnit.Framework.Constraints;
 
 namespace TDDPractice
 {
@@ -37,7 +39,27 @@ namespace TDDPractice
             Bank bank = new Bank();
             Money reduced = bank.Reduce(sum, "USD");
             Assert.AreEqual(Money.Dollar(10), reduced);
-            ;
+        }
+
+        [Test]
+        public void TestPlusReturnsSum()
+        {
+            Money five = Money.Dollar(5);
+            IExpression result = five.Plus(five);
+            Sum sum = (Sum) result;
+            Assert.AreEqual(five, sum.Augend);
+            Assert.AreEqual(five, sum.Addend);
+        }
+
+        [Test]
+        public void TestReduceSum()
+        {
+            IExpression sum = new Sum(Money.Dollar(3), Money.Dollar(4));
+            Bank bank = new Bank();
+            Money result = bank.Reduce(sum, "USD");
+            Assert.AreEqual(Money.Dollar(7), result);
+
+
         }
     }
 }

@@ -6,20 +6,20 @@ namespace TDDPractice
 {
     public class Money : IExpression
     {
-        protected int amount;
+        public int Amount;
 
         protected string currency;
 
         public Money(int amount,string currency)
         {
-            this.amount = amount;
+            this.Amount = amount;
             this.currency = currency;
         }
 
         public override bool Equals(object? obj)
         {
             Money money = (Money)obj;
-            return amount == money.amount && this.Currency() == money.Currency();
+            return Amount == money.Amount && this.Currency() == money.Currency();
         }
 
         public static Money Dollar(int amount)
@@ -40,17 +40,17 @@ namespace TDDPractice
 
         public Money Times(int multiplier)
         {
-            return new Money(amount * multiplier, currency);
+            return new Money(Amount * multiplier, currency);
         }
 
         public override string ToString()
         {
-            return amount + " " + currency;
+            return Amount + " " + currency;
         }
 
         public IExpression Plus(Money addend)
         {
-            return new Money(amount + addend.amount, currency);
+            return new Sum(this, addend);
         }
     }
 }
