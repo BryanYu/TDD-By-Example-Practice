@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TDDPractice
 {
-    public class Money
+    public class Money : IExpression
     {
         protected int amount;
 
@@ -46,6 +46,11 @@ namespace TDDPractice
         public override string ToString()
         {
             return amount + " " + currency;
+        }
+
+        public IExpression Plus(Money addend)
+        {
+            return new Money(amount + addend.amount, currency);
         }
     }
 }

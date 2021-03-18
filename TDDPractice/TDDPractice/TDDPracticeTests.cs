@@ -28,5 +28,16 @@ namespace TDDPractice
             Assert.AreSame("USD", Money.Dollar(1).Currency());
             Assert.AreSame("CHF", Money.Franc(1).Currency());
         }
+
+        [Test]
+        public void TestSimpleAddition()
+        {
+            Money five = Money.Dollar(5);
+            IExpression sum = five.Plus(five);
+            Bank bank = new Bank();
+            Money reduced = bank.Reduce(sum, "USD");
+            Assert.AreEqual(Money.Dollar(10), reduced);
+            ;
+        }
     }
 }
