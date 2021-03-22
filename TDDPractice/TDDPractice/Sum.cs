@@ -2,31 +2,33 @@
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.VisualBasic;
+using NUnit.Framework;
 
 namespace TDDPractice
 {
     class Sum :IExpression
     {
         
-        public Sum(Money augend, Money addend)
+        public Sum(IExpression augend, IExpression addend)
         {
             this.Augend = augend;
             this.Addend = addend;
         }
 
-        public Money Augend { get; set; }
-        public Money Addend { get; set; }
+        public IExpression Augend { get; set; }
+        public IExpression Addend { get; set; }
 
-        public Money Reduce(string to)
-        {
-            int amount = this.Augend.Amount + this.Addend.Amount;
-            return new Money(amount, to);
-        }
+
 
         public Money Reduce(Bank bank, string to)
         {
-            int amount = Augend.Amount + Addend.Amount;
+            int amount = this.Augend.Reduce(bank, to).Amount + this.Addend.Reduce(bank, to).Amount;
             return new Money(amount, to);
+        }
+
+        public IExpression Plus(IExpression addend)
+        {
+            return null;
         }
     }
 }

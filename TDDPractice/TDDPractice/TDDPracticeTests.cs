@@ -68,5 +68,17 @@ namespace TDDPractice
             Money result = bank.Reduce(Money.Franc(2), "USD");
             Assert.AreEqual(Money.Dollar(1), result);
         }
+
+        [Test]
+        public void TestMixedAddition()
+        {
+            IExpression fiveBucks = Money.Dollar(5);
+            IExpression tenFrancs = Money.Franc(10);
+
+            Bank bank = new Bank();
+            bank.AddRate("CHF", "USD", 2);
+            Money result = bank.Reduce(fiveBucks.Plus(tenFrancs), "USD");
+            Assert.AreEqual(Money.Dollar(10), result);
+        }
     }
 }

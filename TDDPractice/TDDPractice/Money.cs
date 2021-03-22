@@ -38,7 +38,7 @@ namespace TDDPractice
             return this.currency;
         }
 
-        public Money Times(int multiplier)
+        public IExpression Times(int multiplier)
         {
             return new Money(Amount * multiplier, currency);
         }
@@ -48,7 +48,7 @@ namespace TDDPractice
             return Amount + " " + currency;
         }
 
-        public IExpression Plus(Money addend)
+        public IExpression Plus(IExpression addend)
         {
             return new Sum(this, addend);
         }

@@ -9,7 +9,6 @@ namespace TDDPractice
 {
     public class Bank
     {
-
         private Hashtable rates = new Hashtable();
         public Money Reduce(IExpression source, string to)
         {
