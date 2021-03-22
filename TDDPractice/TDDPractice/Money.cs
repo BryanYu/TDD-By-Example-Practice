@@ -52,5 +52,11 @@ namespace TDDPractice
         {
             return new Sum(this, addend);
         }
+
+        public Money Reduce(Bank bank ,string to)
+        {
+            int rate = bank.Rate(currency, to);
+            return new Money(Amount / rate, to);
+        }
     }
 }

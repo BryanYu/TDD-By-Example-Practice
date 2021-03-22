@@ -6,7 +6,7 @@ using NUnit.Framework.Constraints;
 namespace TDDPractice
 {
     public class TDDPracticeTests
-    { 
+    {
         [Test]
         public void TestMultiplication()
         {
@@ -14,7 +14,7 @@ namespace TDDPractice
             Assert.AreEqual(Money.Dollar(10), five.Times(2));
             Assert.AreEqual(Money.Dollar(15), five.Times(3));
         }
-        
+
 
         [Test]
         public void TestEqual()
@@ -58,8 +58,15 @@ namespace TDDPractice
             Bank bank = new Bank();
             Money result = bank.Reduce(sum, "USD");
             Assert.AreEqual(Money.Dollar(7), result);
+        }
 
-
+        [Test]
+        public void TestReduceMoneyDifferentCurrency()
+        {
+            Bank bank = new Bank();
+            bank.AddRate("CHF", "USD", 2);
+            Money result = bank.Reduce(Money.Franc(2), "USD");
+            Assert.AreEqual(Money.Dollar(1), result);
         }
     }
 }
