@@ -80,5 +80,30 @@ namespace TDDPractice
             Money result = bank.Reduce(fiveBucks.Plus(tenFrancs), "USD");
             Assert.AreEqual(Money.Dollar(10), result);
         }
+
+        [Test]
+        public void TestSumPlusMoney()
+        {
+            IExpression fiveBucks = Money.Dollar(5);
+            IExpression tenFrancs = Money.Franc(10);
+
+            Bank bank = new Bank();
+            bank.AddRate("CHF","USD",2);
+            IExpression sum = new Sum(fiveBucks, tenFrancs).Plus(fiveBucks);
+            Money result = bank.Reduce(sum, "USD");
+            Assert.AreEqual(Money.Dollar(15), result);
+        }
+
+        [Test]
+        public void TestSumTimes()
+        {
+            IExpression fiveBucks = Money.Dollar(5);
+            IExpression tenFrancs = Money.Franc(10);
+            Bank bank = new Bank();
+            bank.AddRate("CHF", "USD", 2);
+            IExpression sum = new Sum(fiveBucks, tenFrancs).Times(2);
+            Money result = bank.Reduce(sum, "USD");
+            Assert.AreEqual(Money.Dollar(20), result);
+        }
     }
 }
